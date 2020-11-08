@@ -7,30 +7,6 @@ const App = () => {
     const [operator, setOperator] = useState('')
     const [result, setResult] = useState(0)
 
-    // useEffect(() => {
-    //     const keyPressEventHandler = evt => {
-    //         evt.preventDefault()
-    //
-    //         const { key } = evt
-    //
-    //         if ('*-+/'.split('').includes(key)) {
-    //             setOperator(key)
-    //         } else if (['c', 'C', 'Delete', 'Backspace'].includes(key)) {
-    //             reset(true)
-    //         } else if ('0123456789'.split('').includes(key)) {
-    //             appendDigit(key)
-    //         } else if (['=', 'Enter'].includes(key)) {
-    //             calculateResult()
-    //         }
-    //     }
-    //
-    //     document.addEventListener('keypress', keyPressEventHandler)
-    //
-    //     return () => {
-    //         document.removeEventListener('keypress', keyPressEventHandler)
-    //     }
-    // }, []) // this effect must run only once on initial render
-
     const appendDigit = val => {
         // check if we have an operator available and set the correct operand
         if (!operator) {
