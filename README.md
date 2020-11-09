@@ -4,6 +4,21 @@ This is a simple arithmetic calculator based on React.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Concepts Covered
+
+- React
+    - `create-react-app`
+    - App styling via `App.css`
+    - Functional components
+    - React`useState` hooks
+- [Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/) for layout management
+- ES6
+    - Scoping - `const` & `let`
+
+## Screenshot
+
+![Screenshot](screenshot.png)
+
 ## Available Scripts
 
 In the project directory, you can run:
@@ -25,7 +40,3 @@ The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### Screenshot
-
-![Screenshot](screenshot.png)
