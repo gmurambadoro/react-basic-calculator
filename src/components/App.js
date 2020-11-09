@@ -27,6 +27,8 @@ function App() {
 
     useEffect(() => {
         const handleKeyboardEvent = e => {
+            e.preventDefault()
+
             const { key } = e
 
             const numbers = '0123456789'.split('')
