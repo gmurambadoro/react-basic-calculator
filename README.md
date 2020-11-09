@@ -10,7 +10,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
     - `create-react-app`
     - App styling via `App.css`
     - Functional components
-    - React`useState` hooks
+    - React`useState`, `useRef` hooks
 - [Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/) for layout management
 - ES6
     - Scoping - `const` & `let`
