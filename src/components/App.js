@@ -70,32 +70,37 @@ const App = () => {
 
     return (
         <div className={"Container"}>
-            <div className={"Calculator"}>
-                <div className={"Lcd"}>{result.toString().padStart(7, ' ').substring(0, 7)}</div>
-                <div className={"NumPad"}>
-                    <div className={"Button"} onClick={() => appendDigit(7)}>7</div>
-                    <div className={"Button"} onClick={() => appendDigit(8)}>8</div>
-                    <div className={"Button"} onClick={() => appendDigit(9)}>9</div>
-                    <div className={"Button"} onClick={() => setOperator('/')}>/</div>
+            <div className="Row">
+                <div className={"Calculator"}>
+                    <div className={"Lcd"}>{result.toString().padStart(7, ' ').substring(0, 7)}</div>
+                    <div className={"NumPad"}>
+                        <div className={"Button"} onClick={() => appendDigit(7)}>7</div>
+                        <div className={"Button"} onClick={() => appendDigit(8)}>8</div>
+                        <div className={"Button"} onClick={() => appendDigit(9)}>9</div>
+                        <div className={"Button"} onClick={() => setOperator('/')}>/</div>
 
-                    <div className={"Button"} onClick={() => appendDigit(4)}>4</div>
-                    <div className={"Button"} onClick={() => appendDigit(5)}>5</div>
-                    <div className={"Button"} onClick={() => appendDigit(6)}>6</div>
-                    <div className={"Button"} onClick={() => setOperator('*')}>*</div>
+                        <div className={"Button"} onClick={() => appendDigit(4)}>4</div>
+                        <div className={"Button"} onClick={() => appendDigit(5)}>5</div>
+                        <div className={"Button"} onClick={() => appendDigit(6)}>6</div>
+                        <div className={"Button"} onClick={() => setOperator('*')}>*</div>
 
-                    <div className={"Button"} onClick={() => appendDigit(1)}>1</div>
-                    <div className={"Button"} onClick={() => appendDigit(2)}>2</div>
-                    <div className={"Button"} onClick={() => appendDigit(3)}>3</div>
-                    <div className={"Button"} onClick={() => setOperator('-')}>-</div>
+                        <div className={"Button"} onClick={() => appendDigit(1)}>1</div>
+                        <div className={"Button"} onClick={() => appendDigit(2)}>2</div>
+                        <div className={"Button"} onClick={() => appendDigit(3)}>3</div>
+                        <div className={"Button"} onClick={() => setOperator('-')}>-</div>
 
-                    <div className={"Button"} onClick={() => appendDigit(0)}>0</div>
-                    <div className={"Button"}>.</div>
-                    <div className={"Button"} onClick={() => reset(true)}>C</div>
-                    <div className={"Button"} onClick={() => setOperator('+')}>+</div>
+                        <div className={"Button"} onClick={() => appendDigit(0)}>0</div>
+                        <div className={"Button"}>.</div>
+                        <div className={"Button"} onClick={() => reset(true)}>C</div>
+                        <div className={"Button"} onClick={() => setOperator('+')}>+</div>
+                    </div>
+                    <div className={"Button-Equals"} onClick={() => calculateResult()}>=</div>
+
+                    <p>{expression()}</p>
                 </div>
-                <div className={"Button-Equals"} onClick={() => calculateResult()}>=</div>
-
-                <p>{expression()}</p>
+                <div className="Text">
+                    {/*<h5>Test</h5>*/}
+                </div>
             </div>
         </div>
     )
