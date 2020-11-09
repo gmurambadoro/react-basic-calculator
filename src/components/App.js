@@ -111,8 +111,8 @@ function App() {
 
         document.addEventListener('keydown', handleKeyboardEvent)
 
-        return () => document.removeEventListener('keydown', handleKeyboardEvent)
-    })
+        return () => document.removeEventListener('keydown', handleKeyboardEvent) // cleanup operation
+    }, []) // this effect will run only once
 
     const appendDigit = val => {
         // check if we have an operator available and set the correct operand
