@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import './Styles.css'
+import './App.css'
 
 const App = () => {
     const [operand1, setOperand1] = useState(0)
