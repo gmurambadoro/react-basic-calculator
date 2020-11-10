@@ -36,7 +36,7 @@ function App() {
             const enter = ['Enter', '=']
             const clear = ['C', 'c', 'Delete', 'Backspace']
 
-            const inputRef = val => { // method will look for suitable keyRef for the selected key
+            const keyInputRef = val => { // method will look for suitable keyRef for the selected key
                 if (enter.includes(val)) {
                     return keyEnterRef
                 }
@@ -104,7 +104,7 @@ function App() {
                 return null
             }
 
-            const input = inputRef(key)
+            const input = keyInputRef(key)
 
             if (input !== null) {
                 input.current.click()
