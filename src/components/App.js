@@ -2,8 +2,8 @@ import React, {useEffect, useRef, useState} from 'react'
 import './App.css'
 
 function App() {
-    const [operand1, setOperand1] = useState(0)
-    const [operand2, setOperand2] = useState(0)
+    const [operand1, setOperand1] = useState('0')
+    const [operand2, setOperand2] = useState('0')
     const [operator, setOperator] = useState('')
     const [result, setResult] = useState(0)
 
@@ -24,6 +24,7 @@ function App() {
     const keyDivRef = useRef(null)
     const keyResetRef = useRef(null)
     const keyEnterRef = useRef(null)
+    const keyDecimalRef = useRef(null)
 
     useEffect(() => {
         const handleKeyboardEvent = e => {
@@ -35,6 +36,7 @@ function App() {
             const operators = '*-+/'.split('')
             const enter = ['Enter', '=']
             const clear = ['C', 'c', 'Delete', 'Backspace']
+            const decimalPoints = ['.', ',']
 
             const keyInputRef = val => { // method will look for suitable keyRef for the selected key
                 if (enter.includes(val)) {
@@ -101,6 +103,10 @@ function App() {
                     }
                 }
 
+                if (decimalPoints.includes(val)) {
+                    return keyDecimalRef
+                }
+
                 return null
             }
 
@@ -117,17 +123,32 @@ function App() {
     }, []) // this effect will run only once
 
     const appendDigit = val => {
+        if ([',', '.'].includes(val)) {
+            val = '.'
+        }
+
         // check if we have an operator available and set the correct operand
         if (!operator) {
+            // see if a decimal point is already included
+            if (val === '.' && String(operand1).includes('.')) {
+                return
+            }
+
+            // check if
             const operand = String(operand1) + String(val)
 
-            setOperand1(Number.parseInt(operand)) // update the state
+            setOperand1(operand) // update the state
 
             setResult(Number.parseInt(operand)) // the state doesn't update immediately
         } else {
+            // see if decimal point is already included
+            if (val === '.' && String(operand2).includes('.')) {
+                return
+            }
+
             const operand = String(operand2) + String(val)
 
-            setOperand2(Number.parseInt(operand)) // update the state
+            setOperand2(operand) // update the state
 
             setResult(Number.parseInt(operand)) // the state doesn't update immediately
         }
@@ -146,19 +167,19 @@ function App() {
     const calculateResult = () => {
         switch (operator) {
             case '+':
-                setResult(operand1 + operand2)
+                setResult(Number.parseFloat(operand1) + Number.parseFloat(operand2))
                 break
 
             case '-':
-                setResult(operand1 - operand2)
+                setResult(Number.parseFloat(operand1) - Number.parseFloat(operand2))
                 break
 
             case '*':
-                setResult(operand1 * operand2)
+                setResult(Number.parseFloat(operand1) * Number.parseFloat(operand2))
                 break
 
             case '/':
-                setResult(operand1 / operand2)
+                setResult(Number.parseFloat(operand1) / Number.parseFloat(operand2))
                 break
         }
 
@@ -171,10 +192,10 @@ function App() {
         }
 
         if (!operator) {
-            return String(operand1)
+            return String(Number.parseFloat(operand1))
         }
 
-        return `${operand1} ${operator} ${operand2}`
+        return `${Number.parseFloat(operand1)} ${operator} ${Number.parseFloat(operand2)}`
     }
 
     return (
@@ -199,7 +220,7 @@ function App() {
                         <div className={"Button"} ref={keyMinusRef} onClick={() => setOperator('-')}>-</div>
 
                         <div className={"Button"} ref={key0Ref} onClick={() => appendDigit(0)}>0</div>
-                        <div className={"Button"}>.</div>
+                        <div className={"Button"} ref={keyDecimalRef} onClick={() => appendDigit('.')}>.</div>
                         <div className={"Button"} ref={keyResetRef} onClick={() => reset(true)}>C</div>
                         <div className={"Button"} ref={keyPlusRef} onClick={() => setOperator('+')}>+</div>
                     </div>
